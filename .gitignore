@@ -1,0 +1,6 @@
+trydemo/target/
+trydemo/bin/
+*.classpath
+*.project
+trydemo/.settings
+trydemo/src/main/webapp/node_modules
