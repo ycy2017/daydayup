@@ -1,4 +1,4 @@
-package trydemo.thread;
+package trydemo.thread.threadpool;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,6 +39,7 @@ public class CallableDemo {
 			
 			 AccountData task= new AccountData(i);
 			 Future<Data>  futre= threadPool.submit(task);
+//			 Future<Data>  futre= threadPool.execute(task);
 			 futureList.add(futre);
 			 
 		}

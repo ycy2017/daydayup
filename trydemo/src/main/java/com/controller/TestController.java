@@ -1,11 +1,18 @@
 package com.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -42,6 +49,34 @@ public class TestController {
 	public String forward(){
 		System.out.println("............forward.............");
 		return "forward:/hello";
+	}
+	
+	@RequestMapping(value="/dologin",method=RequestMethod.GET)
+	public void dologin(HttpServletRequest request,@RequestParam String username){
+//		ServletActionContext.getServletContext().getInitParameter("...")
+		//绑定session
+//		try {
+//			username = URLDecoder.decode(username,"UTF-8");
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		}
+		try {
+			username = new String(username.getBytes("iso8859-1"),"utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		HttpSession session= request.getSession();
+//		System.out.println("dologin..." + username);
+//		session.setAttribute("username", username);
+	}
+	
+	@RequestMapping(value="/loginout",method=RequestMethod.GET)
+	public void loginout(HttpServletRequest request){
+		HttpSession session= request.getSession();
+		System.out.println("dologin..." + session.getAttribute("username"));
+		session.removeAttribute("username");
+		
 	}
 	
 }

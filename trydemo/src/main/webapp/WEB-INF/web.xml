@@ -12,19 +12,24 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-
-
   <context-param>
     <param-name>log4jConfigLocation</param-name>
     <param-value>classpath:log4j.properties</param-value>
   </context-param>
+    <!-- 日志监听 必需放在前面,不然项目启动时日志不打印 -->
     <listener>
-  <!-- 日志监听 必需放在前面,不然项目启动时日志不打印 -->
-    <listener-class>  
+    	<listener-class>  
             org.springframework.web.util.Log4jConfigListener  
         </listener-class>
-  </listener>
+  	</listener>
 
+	<!-- 监听器 -->
+    <listener>
+ 		<listener-class>  
+         com.listener.AccountSession
+        </listener-class>
+  	</listener>
+  
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:**/applicationContext.xml</param-value>

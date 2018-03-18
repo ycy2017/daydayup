@@ -1,6 +1,5 @@
-package trydemo.thread;
+package trydemo.thread.queue;
 
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 
 public class BlockQueueDemo {
