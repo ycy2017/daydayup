@@ -33,7 +33,10 @@ public class QueueDemo {
 		Map<String,String> map = new ConcurrentHashMap<String,String>();
 		
 		//有界的队列,初始化时,必需声明队列大小
-		Queue<String> queue2 = new ArrayBlockingQueue<String>(10);
+		Queue<String> queue2 = new ArrayBlockingQueue<String>(2);
+		queue2.add("1");
+		queue2.add("2");
+		queue2.add("3");
 		
 		//无界的队列
 		Queue<String> queue3 = new LinkedBlockingQueue<String>();

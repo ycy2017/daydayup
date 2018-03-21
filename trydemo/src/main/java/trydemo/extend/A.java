@@ -14,10 +14,12 @@ public class A {
 	}
 
 	public static void main(String[] args) {
-		// A A =new C();
-		// B B =new C();
-		// A b =new B();
-		"el".equals("dad");
+//		 A A =new C();
+//		 B B =new C();
+//		 A b =new B();
+//		"el".equals("dad");
+		
+		
 	}
 
 }
@@ -29,16 +31,18 @@ public class A {
  *
  */
 abstract class B extends A {
-	{
-		System.out.println("B代码块");
-	}
+
 	static {
 		System.out.println("B静态块");
 	}
-
+	{
+		System.out.println("B代码块");
+	}
 	public B() {
 		System.out.println("B");
 	}
+	
+	
 }
 
 class C extends B {
