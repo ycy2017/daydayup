@@ -24,6 +24,7 @@ import org.apache.log4j.Logger;
 import com.mas.dtc.scripts.outsource.fileprocess.impl.ProcessCsv;
 import com.mas.dtc.scripts.outsource.fileprocess.impl.ProcessExcel;
 import com.mas.dtc.scripts.outsource.fileprocess.impl.ProcessJson;
+import com.mas.dtc.scripts.outsource.fileprocess.impl.ProcessLine;
 import com.mas.dtc.scripts.outsource.source.IDataSource;
 import com.mas.dtc.scripts.outsource.task.FutureData;
 import com.mas.dtc.scripts.outsource.task.ReadTask;
@@ -112,7 +113,6 @@ public abstract class BaseFileProcess {
 		//cpu核心数
 		int cpuThread = Runtime.getRuntime().availableProcessors();
 		//访问线程
-		
 		this.rs = new ThreadPoolExecutor(cpuThread, cpuThread,
                 0L, TimeUnit.MILLISECONDS,
                 this.workQueue );
@@ -159,7 +159,8 @@ public abstract class BaseFileProcess {
 		} else if (inFilePath.endsWith(".xlsx")) {
 			process = new ProcessExcel(bds);
 		}else if (inFilePath.endsWith(".txt")){
-			process = new ProcessJson(bds);
+//			process = new ProcessJson(bds);
+			process = new ProcessLine(bds);
 		}
 		
 		return process;
@@ -213,6 +214,8 @@ public abstract class BaseFileProcess {
 		this.outFilePath = outFilePath;
 		// 导出数据
 		getDataToExport(inFilePath, outFilePath, type);
+		//关闭流
+		closeSource();
 	}
 
 	/**
@@ -293,12 +296,14 @@ public abstract class BaseFileProcess {
 	
 	
 	/**
+	 * 关闭刘之前要判断所有的任务都已经完成了
+	 * 
 	 * 关闭资源
 	 */
 	public void closeSource(){
 		this.rs.shutdown();
 		this.ws.shutdown();
-		LOG.info(" threadpoolexecutor is shutdown ");
+		LOG.info(" threadpoolexecutor is shutdowning ");
 		while(true){
 			
 			if(this.ws.isTerminated() && this.rs.isTerminated()){
@@ -309,7 +314,7 @@ public abstract class BaseFileProcess {
 			}else {
 				try {
 					LOG.warn("threadpoolexecutor shutdown is failure,because threadpoolexecutor is running  , wait 3 seconds...");
-					Thread.sleep(3000);
+					Thread.sleep(5000);
 				} catch (InterruptedException e) {
 					LOG.error(e.getMessage());
 				}
@@ -319,7 +324,8 @@ public abstract class BaseFileProcess {
 	};
 	
 	/**
-	 * 关闭
+	 * 关闭流
+	 * 
 	 */
 	public abstract void closeIO();
 	
