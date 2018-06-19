@@ -93,7 +93,7 @@ public abstract class BaseFileProcess {
 	//访问队列
 	BlockingQueue<Runnable> workQueue ;
 	
-	final int MAX_WORK_QUEUE = 100;
+	final int MAX_WORK_QUEUE = 1000;
 	
 	//写线程
 	public ExecutorService ws  ;
@@ -101,7 +101,7 @@ public abstract class BaseFileProcess {
 	//写队列
 	BlockingQueue<Runnable> writeWorkQueue ;
 
-	final int MAX_Write_WORK_QUEUE = 100;
+	final int MAX_Write_WORK_QUEUE = 1000;
 	
 	/**
 	 * 初始化
@@ -111,7 +111,8 @@ public abstract class BaseFileProcess {
 		//初始化队列
 		this.workQueue=new LinkedBlockingQueue<Runnable>();
 		//cpu核心数
-		int cpuThread = Runtime.getRuntime().availableProcessors();
+//		int cpuThread = Runtime.getRuntime().availableProcessors();
+		int cpuThread = 20;
 		//访问线程
 		this.rs = new ThreadPoolExecutor(cpuThread, cpuThread,
                 0L, TimeUnit.MILLISECONDS,

@@ -16,6 +16,8 @@ public class SimilarFetchExport {
 			bp.doRun(args);
 		}
 		Date end = new Date();
+//		线程数是2个   5000条/1469 099ms
+		
 		//243520
 		System.out.println("cost time : "+(end.getTime() - start.getTime()));
 	}
