@@ -41,7 +41,6 @@ public class TemporaryController {
 //		for(Entry entry:map.entrySet()){
 //			System.out.println(entry.getValue());
 //		}
-		
 		Map<Integer, CityEntity>  map1 = c.getCity();
 		for(Entry entry:map1.entrySet()){
 			System.out.println(entry.getValue());
@@ -59,9 +58,7 @@ public class TemporaryController {
 		try {
 			
 			con = DBUtil.getConnection("GlobalSearchDB_W");
-//			statement.executeQuery(SQL);
 			QueryRunner qr = new QueryRunner();
-			
 			ResultSetHandler<List<ActivitySearchEntity>> rsh = new BeanListHandler<ActivitySearchEntity>(ActivitySearchEntity.class);
 			//获取
 		    entities = qr.query(con, SQL, rsh);
@@ -132,9 +129,7 @@ public class TemporaryController {
 		Connection con = null;
 		try {
 			con = DBUtil.getConnection("ArchSearchDB_SELECT_1");
-//			statement.executeQuery(SQL);
 			QueryRunner qr = new QueryRunner();
-			
 			ResultSetHandler<List<CityEntity>> rsh = new BeanListHandler<CityEntity>(CityEntity.class);
 			//获取
 		    entities = qr.query(con, CITY_SQL, rsh);
@@ -156,9 +151,5 @@ public class TemporaryController {
 		}
 		return map;
 	}
-	
-	
-	
-	
 	
 }
