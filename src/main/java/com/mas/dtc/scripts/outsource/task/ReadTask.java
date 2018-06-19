@@ -70,7 +70,6 @@ public class ReadTask implements Callable<FutureData>{
 		Map<String, Object> dataFromOutSource = this.ds.getDataFromDataSource(this.ids, type);
 		FutureData data = new FutureData(this.ids,dataFromOutSource,this.other);
 		LOG.info(type + ": transform " + data.toString());
-				
 		return data;
 	}
 

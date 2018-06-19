@@ -38,7 +38,7 @@ public class WriteTask implements Runnable {
 				try {
 					//"未来结果"的get方法是阻塞线程
 					FutureData  data = future.get();
-					LOG.info(" \"future\" is Done " + data.toString());
+					LOG.info(" \"future\" is Done " + data.getIds());
 					bfp.doWriteToFile(data.getIds(), data.getData(),data.getOther());
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -48,10 +48,9 @@ public class WriteTask implements Runnable {
 				//获取结果后,退出循环
 				break;
 			}else {
-				
 				try {
 					LOG.warn(" \"future\" is working ,wait 1 seconds ... ");
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
