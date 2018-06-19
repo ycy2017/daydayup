@@ -2,38 +2,43 @@ package com.ctrip.search.dictionary.temporary.entity;
 
 public class ActivityResultEntity {
 
-	String cityId;
+	Integer cityId;
 	String cityName;
-	String poiid;
+	Integer poiid;
 	String poiName;
 	Integer sales;
 	Float distance;
 	
 	
-	public ActivityResultEntity(String cityId,String poiid,Integer sales) {
+	public ActivityResultEntity(Integer cityId,Integer poiid,Integer sales) {
 		this.cityId = cityId;
 		this.poiid = poiid;
 		this.sales = sales;
 	}
-	
-	public String getCityId() {
+
+	public Integer getCityId() {
 		return cityId;
 	}
-	public void setCityId(String cityId) {
+
+	public void setCityId(Integer cityId) {
 		this.cityId = cityId;
 	}
+
 	public String getCityName() {
 		return cityName;
 	}
 	public void setCityName(String cityName) {
 		this.cityName = cityName;
 	}
-	public String getPoiid() {
+	
+	public Integer getPoiid() {
 		return poiid;
 	}
-	public void setPoiid(String poiid) {
+
+	public void setPoiid(Integer poiid) {
 		this.poiid = poiid;
 	}
+
 	public String getPoiName() {
 		return poiName;
 	}

@@ -7,6 +7,13 @@ public class CityEntity {
 	public Float lon;
 	public Float lat;
 	
+	public CityEntity(Integer city,String cityname_mapbar,Float lon,Float lat){
+		this.city = city;
+		this.cityname_mapbar = cityname_mapbar;
+		this.lon =  lon;
+		this.lat = lat;
+	}
+	
 	public Integer getCity() {
 		return city;
 	}
