@@ -8,6 +8,7 @@ public class ActivitySearchEntity {
 	
 	private Integer sales;
 
+	
 	public String getLocationcityids() {
 		return locationcityids;
 	}

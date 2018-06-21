@@ -1,6 +1,6 @@
 package util;
 
-public class LocationUtils {
+public class DistanceUtils {
 
 	 private static double EARTH_RADIUS = 6378.137;    
 	    
