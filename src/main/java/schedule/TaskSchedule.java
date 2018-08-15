@@ -26,11 +26,12 @@ public class TaskSchedule  implements Runnable{
 				e.printStackTrace();
 			}
 			for (AbstractTask at : atTaskArr) {
-				//��ȡִ������ı�ʶ
+				//时间到就唤醒
 				if(at.isTimeOver()){
-					at.wakeUp(true);
+					at.wakeUp();
 				}else{
-					at.wakeUp(false);
+					//
+					at.sleep();
 				}
 			}
 			

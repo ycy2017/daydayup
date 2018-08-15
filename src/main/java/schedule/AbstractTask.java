@@ -27,19 +27,19 @@ public abstract class AbstractTask implements Runnable {
 	public void run() {
 		while (true) {
 			while (!getwakeStatus()) {
-				//ʱ��û��,����
+				//自旋
 			}
 			if (getToken()) {
-				// ����ֻ��һ��,ͬһʱ��ֻ����һ������ִ��
+				// 获取到令牌之后进来
 				try {
 					excutorTask();
 				} catch (Exception e) {
 					e.printStackTrace();
 				} finally {
-					// �ͷ�����
+					// 释放令牌
 					realeseToken();
-					//��������ѹر�
-					wakeUp(false);
+					//睡
+					sleep();
 				}
 			}
 			
@@ -53,12 +53,20 @@ public abstract class AbstractTask implements Runnable {
 		return wakeStatus.get();
 	}
 	/**
-	 * ���� true
+	 *  唤醒
 	 * @param isvalid
 	 */
-	public void wakeUp(boolean isvalid) {
-		this.wakeStatus.set(isvalid);
+	public void wakeUp() {
+		this.wakeStatus.set(true);
 	}
+	/**
+	 *  睡
+	 * @param isvalid
+	 */
+	public void sleep() {
+		this.wakeStatus.set(false);
+	}
+	
 
 	public boolean getToken() {
 		return token.getAndSet(false);
