@@ -1,4 +1,4 @@
-package map;
+package collections.map;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,7 @@ public class HashMapDemo {
 		
 		Map<Country,String> map = new HashMap<Country,String>();
 		
-		map.put(china, "±±¾©");
+		map.put(china, "ï¿½ï¿½ï¿½ï¿½");
 		map.put(jap,"tokyo");
 		map.put(usa, "newyerk");
 		

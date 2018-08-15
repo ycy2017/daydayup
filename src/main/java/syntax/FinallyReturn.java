@@ -1,20 +1,21 @@
-package controller;
+package syntax;
 
 public class FinallyReturn {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 		FinallyReturn fr = new FinallyReturn();
 		
 		System.out.println(fr.getInt());
+		System.out.println(fr.getString());
 		System.out.println(fr.getStudent());
 	}
 
 	
 	
 	/**
-	 * 基本类型
+	 * 杩斿洖鐨勬槸鍩烘湰绫诲瀷
 	 * @return
 	 */
 	public int getInt(){
@@ -29,7 +30,22 @@ public class FinallyReturn {
 	}
 	
 	/**
-	 * 引用类型
+	 * 杩斿洖鐨勬槸鍩烘湰绫诲瀷
+	 * @return
+	 */
+	public String getString(){
+		String  i = "a" ;
+		try{
+			return i;
+		}catch(Exception e){
+			return i;
+		}finally{
+			i = "Finally a";
+		}
+	}
+	
+	/**
+	 * 杩斿洖鐨勬槸寮曠敤绫诲瀷
 	 * @return
 	 */
 	public Student getStudent(){
@@ -40,7 +56,7 @@ public class FinallyReturn {
 		}catch(Exception e){
 			return s;
 		}finally{
-			s.setName("被我Finally修改了...");;
+			s.setName("Finally CC");;
 		}
 	}
 	

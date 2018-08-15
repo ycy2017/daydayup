@@ -6,7 +6,7 @@ public class MaoPao {
 
 	public static void main(String[] args) {
 		
-		//Ã°ÅÝ
+		//Ã°ï¿½ï¿½
 //		int []  arr =  {12,3,56,123,1,42,124241,111,2,1};
 //		
 //		for(int j= 0;j<arr.length-1;j++){
@@ -27,7 +27,7 @@ public class MaoPao {
 //			System.out.println(lll);
 //		}
 		
-		//¿ìÅÄ
+		//ï¿½ï¿½ï¿½ï¿½
 		int []  arrK =  {132,1};
 		
 		for(int j = 0;j< arrK.length;j++){
@@ -37,13 +37,13 @@ public class MaoPao {
 			for(int k =0;k<arrK.length-j;k++){
 				
 				if(max<arrK[k]){
-					//È¡ÕâÒ»ÂÖµÄ×î´óÖµ
+					//È¡ï¿½ï¿½Ò»ï¿½Öµï¿½ï¿½ï¿½ï¿½Öµ
 					max  = arrK[k];
-					//×î´óÖµÏÂ±ê
+					//ï¿½ï¿½ï¿½Öµï¿½Â±ï¿½
 					maxindex = k;
 				}
 			}
-			//»¥»»Î»ÖÃ
+			//ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 			int temp = arrK[maxindex];
 			arrK[maxindex] = arrK[arrK.length-1-j];
 			arrK[arrK.length-1-j] = temp;

@@ -1,4 +1,4 @@
-package controller;
+package syntax;
 
 
 public class DemoServlet  {

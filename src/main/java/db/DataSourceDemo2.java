@@ -39,7 +39,7 @@ public class DataSourceDemo2 {
 	    
 	    //conn 使用失效, 如果超过这个时间,connection报错
 	    dataSource.setRemoveAbandoned(true);
-	    dataSource.setRemoveAbandonedTimeout(1);
+	    dataSource.setRemoveAbandonedTimeout(6000);
 	    dataSource.setLogAbandoned(true);  
 //	    如果开启"removeAbandoned",那么连接在被认为泄露时可能被池回收. 这个机制在
 //	    (getNumIdle() < 2) and (getNumActive() > getMaxActive() - 3)时被触发
@@ -50,6 +50,9 @@ public class DataSourceDemo2 {
 
 	public static void main(String[] args) {
 		
+		getRes();
+		/*
+		 * 
 		//调用5次
 		for(int i =0; i<6;i++){
 			Thread t1 = new Thread(){
@@ -73,6 +76,7 @@ public class DataSourceDemo2 {
 				e.printStackTrace();
 			}
 		}
+		*/
 	}
 
 	public static void getRes(){
@@ -85,12 +89,12 @@ public class DataSourceDemo2 {
 			try {
 				Long start = System.currentTimeMillis();
 				//模拟从建立con 到 使用con的时间
-				Thread.sleep(1000);
+				Thread.sleep(10000);
 				System.out.println(System.currentTimeMillis() - start);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			con.close();
+//			con.close();
 			java.sql.Statement st = con.createStatement();
 			ResultSet rst= st.executeQuery(sql);
 			while(rst.next()){

@@ -1,4 +1,4 @@
-package com;
+package map;
 
 public class Student {
 
