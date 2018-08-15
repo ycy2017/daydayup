@@ -4,7 +4,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.ctrip.search.dictionary.temporary.entity.PoiEntity;
+import collections.PoiEntity;
+
 
 /**
  * 测试在同一次迭代循环中 多次删除

@@ -2,17 +2,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ycy</groupId>
-	<artifactId>thread_demo</artifactId>
+	<artifactId>ycy_demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+	<properties>
+		<!-- <dao.target.dir>src/main/java</dao.target.dir> -->
+	</properties>
+
 	<dependencies>
-		<!-- <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>4.3.17.BUILD-SNAPSHOT</version>
-		</dependency>
- -->
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-context</artifactId> 
+			<version>4.3.17.BUILD-SNAPSHOT</version> </dependency> -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -64,7 +64,7 @@
 			<artifactId>commons-dbutils</artifactId>
 			<version>1.6</version>
 		</dependency>
-		
+
 		<!-- xls格式 -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -93,7 +93,7 @@
 
 	</dependencies>
 
-	<repositories>
+	<!-- <repositories>
 		<repository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
@@ -102,10 +102,39 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
-	</repositories>
+	</repositories> -->
 
 	<build>
+	<pluginManagement>
 		<plugins>
+		
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>1.3.2</version>
+				<configuration>
+					<configurationFile>src/main/resources/mybatis-generator/generatorConfig.xml</configurationFile>
+					<verbose>true</verbose>
+					<overwrite>true</overwrite>
+				</configuration>
+				<executions>
+					<execution>
+						<id>Generate MyBatis Artifacts</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.mybatis.generator</groupId>
+						<artifactId>mybatis-generator-core</artifactId>
+						<version>1.3.2</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		
+		
 			<!-- 项目编译插件 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -113,9 +142,9 @@
 				<version>3.1</version>
 				<configuration>
 					<!-- 源代码编译版本 -->
-					<source>1.7</source>
+					<source>1.8</source>
 					<!-- 目标平台编译版本 -->
-					<target>1.7</target>
+					<target>1.8</target>
 					<!-- 字符集编码 -->
 					<encoding>UTF-8</encoding>
 				</configuration>
@@ -130,7 +159,12 @@
 				<!--任何配置是否被传播到子项目  -->
 				<inherited>true</inherited>
 			</plugin>
+
+
+		
+
 		</plugins>
+		</pluginManagement>
 	</build>
 
 
